@@ -14,27 +14,46 @@ public class HormigaObrera : MonoBehaviour
     public int velocity;
     bool inAttacking;
     public bool firstAnt;
+    Vector3 posicionInicial;
+
+    //Time of the ant lost
+    [SerializeField]float timeAntLost;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        timeAntLost = Random.Range(3, 7);
+        transform.position = primerPosicion.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        /*if (!inAttacking)
+        if(!inAttacking)
         {
             float step = velocity * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z), step);
-        }*/
+        }
 
 
-        if (Input.GetKeyDown("space") && inAttacking)
+        if (Input.GetKeyDown("space"))
         {
             StartCoroutine(huir(false));
         }
+
+        /*if (timeAntLost > 0)
+        {
+            timeAntLost -= Time.deltaTime;
+        }
+        else
+        {
+            int probably = Random.Range(0, 11);
+            print("Probably = " + probably);
+            if (probably <= 4)
+            {
+                StartCoroutine(huir(true));
+            }
+            timeAntLost = Random.Range(5, 10);
+        }*/
     }
 
     public void receiveAttack(float lessLife)
@@ -48,7 +67,7 @@ public class HormigaObrera : MonoBehaviour
 
     IEnumerator huir(bool enemyAttack)
     {
-        if (enMovimiento)
+        if (enMovimiento && enemyAttack)
         {
             yield break;
         }
@@ -56,19 +75,21 @@ public class HormigaObrera : MonoBehaviour
         enMovimiento = true;
         
         
-        int random1 = UnityEngine.Random.Range(-2, 3);
-        int random2 = UnityEngine.Random.Range(-2, 3);
+        float random1 = Random.Range(-5, 6);
+        float random2 = Random.Range(-4, 4);
         Vector3 targetpoint;
         if (enemyAttack)
         {
             targetpoint = new Vector3(transform.position.x + random1, transform.position.y + random2, transform.position.z);
+            duracion = 2f;
         }
         else
         {
             targetpoint = new Vector3(primerPosicion.position.x, primerPosicion.position.y, primerPosicion.position.z);
+            duracion = 0.1f;
         }
         float tiempoPasado = 0f;
-        Vector3 posicionInicial = transform.position;
+        posicionInicial = transform.position;
 
         while(tiempoPasado < duracion)
         {
@@ -81,8 +102,14 @@ public class HormigaObrera : MonoBehaviour
 
         transform.position = targetpoint;
         enMovimiento = false;
+        inAttacking = false;
 
         
+    }
+
+    public void StartCorrutina()
+    {
+        StartCoroutine(huir(true));
     }
 
     private void OnTriggerEnter2D(Collider2D other)
