@@ -115,6 +115,7 @@ public class HormigaObrera : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        print(other.name);
         if (other.tag == "AntKiller")
         {
             Destroy(gameObject);

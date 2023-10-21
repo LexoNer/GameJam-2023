@@ -49,7 +49,6 @@ public class GameManager : MonoBehaviour
             timeAntLost = Random.Range(10, 15);
         }
 
-        print(cronometro += Time.deltaTime);
         
     }
 
