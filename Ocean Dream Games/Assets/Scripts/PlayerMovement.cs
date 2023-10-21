@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     //private GameObject text;
     Animator animator;
     bool playerCanMove;
+    public GameObject attackHitBox;
     
 
 
@@ -24,15 +25,21 @@ public class PlayerMovement : MonoBehaviour
         //text = GameObject.FindGameObjectWithTag("Text");
        animator = GetComponent<Animator>();
         playerCanMove = true;
+        attackHitBox.SetActive(false);
+    
     }
 
     void Update()
     {
         Escape();
-        if (!playerCanMove)
-            return;
+        PlayerAttack();
+        if (playerCanMove)
+        {
 
             PlayerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        }
+          
+
         // text.GetComponent<TMP_Text>().text = antsAlive.ToString();
     }
 
@@ -45,7 +52,11 @@ public class PlayerMovement : MonoBehaviour
             forceToApply = Vector2.zero;
         }
         rb.velocity = moveForce;
-         AnimateCharacter();
+        if(playerCanMove)
+        {
+            AnimateCharacter();
+        }
+        
     }
 
     void AnimateCharacter()
@@ -106,9 +117,21 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             playerCanMove = false;
+            attackHitBox.SetActive(true);
 
-            //animator.SetFloat
+            animator.SetFloat("Vertical", 2);
+            animator.SetFloat("Horizontal", 2);
         }
+    }
+
+    public void ReturnMove()
+    {
+        Debug.Log(playerCanMove);
+        playerCanMove = true;
+        Debug.Log(playerCanMove);
+        attackHitBox.SetActive(false);
+
+
     }
 
 
