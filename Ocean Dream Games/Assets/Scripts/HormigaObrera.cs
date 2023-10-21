@@ -10,17 +10,28 @@ public class HormigaObrera : MonoBehaviour
 
     public float duracion = 2.0f;
     private bool enMovimiento;
-    private Vector3 primerPosicion;
+    [SerializeField] private Transform primerPosicion;
+    public int velocity;
+    bool inAttacking;
+    public bool firstAnt;
     // Start is called before the first frame update
     void Start()
     {
-        primerPosicion = transform.position;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+
+        /*if (!inAttacking)
+        {
+            float step = velocity * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z), step);
+        }*/
+
+
+        if (Input.GetKeyDown("space") && inAttacking)
         {
             StartCoroutine(huir(false));
         }
@@ -31,6 +42,7 @@ public class HormigaObrera : MonoBehaviour
         life -= lessLife;
         print("Life = " + life);
         run = true;
+        inAttacking = true;
         StartCoroutine(huir(true));
     }
 
@@ -43,6 +55,7 @@ public class HormigaObrera : MonoBehaviour
 
         enMovimiento = true;
         
+        
         int random1 = UnityEngine.Random.Range(-2, 3);
         int random2 = UnityEngine.Random.Range(-2, 3);
         Vector3 targetpoint;
@@ -52,7 +65,7 @@ public class HormigaObrera : MonoBehaviour
         }
         else
         {
-            targetpoint = primerPosicion;
+            targetpoint = new Vector3(primerPosicion.position.x, primerPosicion.position.y, primerPosicion.position.z);
         }
         float tiempoPasado = 0f;
         Vector3 posicionInicial = transform.position;
@@ -70,5 +83,19 @@ public class HormigaObrera : MonoBehaviour
         enMovimiento = false;
 
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "AntKiller")
+        {
+            Destroy(gameObject);
+        }
+
+        if (other.tag == "Player")
+        {
+
+        }
+
     }
 }
