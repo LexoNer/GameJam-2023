@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 PlayerInput;
     public int antsAlive;
     //private GameObject text;
-    public Animator animator;
+     Animator animator;
     bool playerCanMove;
     public GameObject attackHitBox;
     public Transform attackPoint;
