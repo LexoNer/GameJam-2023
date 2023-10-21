@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float moveSpeed;
+    float speed;
     Vector2 forceToApply;
     Vector2 PlayerInput;
     public int antsAlive;
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
        animator = GetComponent<Animator>();
         playerCanMove = true;
         attackHitBox.SetActive(false);
+        speed = moveSpeed;
     
     }
 
@@ -118,6 +120,7 @@ public class PlayerMovement : MonoBehaviour
         {
             playerCanMove = false;
             attackHitBox.SetActive(true);
+            moveSpeed = 0;
 
             animator.SetFloat("Vertical", 2);
             animator.SetFloat("Horizontal", 2);
@@ -129,9 +132,8 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log(playerCanMove);
         playerCanMove = true;
         Debug.Log(playerCanMove);
+        moveSpeed = speed;
         attackHitBox.SetActive(false);
-
-
     }
 
 
