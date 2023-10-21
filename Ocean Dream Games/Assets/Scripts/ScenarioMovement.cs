@@ -9,7 +9,7 @@ public class ScenarioMovement : MonoBehaviour
     private Material material;
     private Rigidbody2D hormigas;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         material = GetComponent<SpriteRenderer>().material;
     }

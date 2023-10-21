@@ -11,7 +11,7 @@ public class HormigaObrera : MonoBehaviour
     public float duracion = 2.0f;
     private bool enMovimiento;
     [SerializeField] private Transform primerPosicion;
-    public int velocity;
+    public float velocity;
     bool inAttacking;
     public bool firstAnt;
     Vector3 posicionInicial;
@@ -40,6 +40,7 @@ public class HormigaObrera : MonoBehaviour
             StartCoroutine(huir(false));
         }
 
+        
         /*if (timeAntLost > 0)
         {
             timeAntLost -= Time.deltaTime;
@@ -75,8 +76,8 @@ public class HormigaObrera : MonoBehaviour
         enMovimiento = true;
         
         
-        float random1 = Random.Range(-5, 6);
-        float random2 = Random.Range(-4, 4);
+        float random1 = Random.Range(-4.5f, 5.1f);
+        float random2 = Random.Range(-2.5f, 1.5f);
         Vector3 targetpoint;
         if (enemyAttack)
         {

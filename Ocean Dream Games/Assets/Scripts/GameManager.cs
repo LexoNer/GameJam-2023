@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     float timeBossWait = 60;
     [SerializeField] GameObject[] enemy;
     [SerializeField] Transform enemySpawn;
+
+    public float cronometro;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,16 +49,8 @@ public class GameManager : MonoBehaviour
             timeAntLost = Random.Range(10, 15);
         }
 
-        /*if (timeAntLost > 0)
-        {
-            timeBossWait -= Time.deltaTime;
-        }
-        else
-        {
-            enemy
-            enemy.transform.position = new Vector3(bossSpawn.position.x + 15, bossSpawn.position.y + 3, bossSpawn.position.z);
-
-        }*/
+        print(cronometro += Time.deltaTime);
+        
     }
 
 
