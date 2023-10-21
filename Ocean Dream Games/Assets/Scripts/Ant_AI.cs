@@ -18,7 +18,7 @@ public class Ant_AI : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         speed = aiSpeed;
-        Debug.Log("speed: " + speed);
+       //Debug.Log("speed: " + speed);
         seconds = 5f;
     }
 
@@ -56,7 +56,7 @@ public class Ant_AI : MonoBehaviour
         if (seconds <= 0)
         {
             seconds = Random.Range(minTime, maxTime);
-            Debug.Log("seconds: " + seconds);
+           // Debug.Log("seconds: " + seconds);
             aiSpeed = 0;
         }
 

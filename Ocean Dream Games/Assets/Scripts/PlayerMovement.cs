@@ -14,10 +14,14 @@ public class PlayerMovement : MonoBehaviour
     Vector2 PlayerInput;
     public int antsAlive;
     //private GameObject text;
-    Animator animator;
+    public Animator animator;
     bool playerCanMove;
     public GameObject attackHitBox;
-    
+    public Transform attackPoint;
+
+
+
+
 
 
     private void Start()
@@ -28,7 +32,14 @@ public class PlayerMovement : MonoBehaviour
         playerCanMove = true;
         attackHitBox.SetActive(false);
         speed = moveSpeed;
+       // SetAttackPointPosition(attackTargetRight);
     
+    }
+
+    private void SetAttackPointPosition(Transform transform)
+    {
+        attackPoint.position = transform.position;
+        attackPoint.rotation = transform.rotation;  
     }
 
     void Update()
@@ -74,21 +85,25 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetFloat("Vertical", 1);
             animator.SetFloat("Horizontal", 0);
+           // SetAttackPointPosition(attackTargetUp);
         }
         if (PlayerInput.y == -1)
         {
            animator.SetFloat("Vertical", -1);
            animator.SetFloat("Horizontal", 0);
+          // SetAttackPointPosition(attackTargetDown);
         }
         if (PlayerInput.x == -1)
         {
             animator.SetFloat("Vertical", 0);
             animator.SetFloat("Horizontal", -1);
+            //SetAttackPointPosition(attackTargetLeft);
         }
         if (PlayerInput.x == 1)
         {
             animator.SetFloat("Vertical", 0);
             animator.SetFloat("Horizontal", 1);
+            //SetAttackPointPosition(attackTargetRight);
         }
 
     }
