@@ -25,15 +25,7 @@ public class WeaponRotation : MonoBehaviour
         cursor.transform.position = aimDirection;
 
 
-        //float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-
-        // Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        
-        //aimTransform.eulerAngles = new Vector3(0,0, angle);
-        //attackPoint.eulerAngles = new Vector3(0,0, angle);
-
-        //Debug.Log(angle);
-        //Debug.Log(aimTransform.eulerAngles);
+       
     }
 
 }
