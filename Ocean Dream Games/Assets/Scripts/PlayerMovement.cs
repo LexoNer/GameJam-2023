@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     public int antsAlive;
     //private GameObject text;
     Animator animator;
+    bool playerCanMove;
+    
 
 
     private void Start()
@@ -21,21 +23,23 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         //text = GameObject.FindGameObjectWithTag("Text");
        animator = GetComponent<Animator>();
+        playerCanMove = true;
     }
 
     void Update()
     {
-        
+        Escape();
+        if (!playerCanMove)
+            return;
+
             PlayerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         // text.GetComponent<TMP_Text>().text = antsAlive.ToString();
-        Escape();
     }
 
     void FixedUpdate()
     {
-
         Vector2 moveForce = PlayerInput * moveSpeed;
-        moveForce += forceToApply;
+        moveForce += forceToApply;  
         if (Mathf.Abs(forceToApply.x) <= 0.01f && Mathf.Abs(forceToApply.y) <= 0.01f)
         {
             forceToApply = Vector2.zero;
@@ -86,4 +90,28 @@ public class PlayerMovement : MonoBehaviour
             #endif
         }
     }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "AntKiller")
+        {
+            Destroy(gameObject);
+        } 
+    }
+
+
+    void PlayerAttack()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            playerCanMove = false;
+
+            //animator.SetFloat
+        }
+    }
+
+
+
+
 }
