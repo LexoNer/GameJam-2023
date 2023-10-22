@@ -19,13 +19,19 @@ public class ProjectileAddon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        /*if (collision.gameObject.GetComponent<KusPlaceHolderEnemy>() != null)
+        if (collision.gameObject.GetComponent<KusPlaceHolderEnemy>() != null)
         {
             KusPlaceHolderEnemy enemy = collision.gameObject.GetComponent<KusPlaceHolderEnemy>();
             enemy.receiveAttack(damage);
             Debug.Log("isWorking");
             Destroy(gameObject);
-        }*/
+        }
+
+        if(collision.gameObject.GetComponent<BossLogic>() != null)
+        {
+            collision.gameObject.GetComponent<BossLogic>().AttackBoss();
+        }
+
         if (collision.gameObject.GetComponent<Enemy>() != null)
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();

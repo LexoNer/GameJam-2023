@@ -13,6 +13,8 @@ public class BossLogic : MonoBehaviour
 
     private bool enMovimiento = false;
     public Animator animator;
+    bool ataqueAnt;
+    public int lifeoftheboss = 100;
 
     void Start()
     {
@@ -60,10 +62,32 @@ public class BossLogic : MonoBehaviour
     {
 
         yield return new WaitForSeconds(1.7f);
-        animator.SetBool("Attack", false);
-        manager.hormigasObreras.Remove(hormigaObrera);
-        Destroy(hormigaObrera);
-        StartCoroutine(Boss());
+
+        if (animator.GetBool("Attack"))
+        {
+            animator.SetBool("Attack", false);
+            manager.hormigasObreras.Remove(hormigaObrera);
+            Destroy(hormigaObrera);
+        }
+            StartCoroutine(Boss());
+    }
+
+    public void AttackBoss()
+    {
+        print("Ataque");
+        if (animator.GetBool("Attack"))
+        {
+            animator.SetBool("Attack", false);
+        }
+        else
+        {
+            lifeoftheboss -= 10;
+
+            if( lifeoftheboss <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 }
 
