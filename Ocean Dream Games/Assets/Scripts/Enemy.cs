@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     private Transform target;
     private GameObject hormigaObrera;
     private HormigaObrera hormiga;
+    private Animator animator;
     private bool canAttack;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private float velocity;
@@ -34,6 +35,9 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+
+
         hormigaObrera = gameManager.hormigasObreras[UnityEngine.Random.Range(0, gameManager.hormigasObreras.Count)];
         target = hormigaObrera.transform;
         hormiga = hormigaObrera.GetComponent<HormigaObrera>();
