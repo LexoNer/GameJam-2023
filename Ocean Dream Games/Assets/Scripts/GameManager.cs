@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
                         ejectOnce++;
                     }
                 }
-                timeAntLost = Random.Range(10, 15);
+                timeAntLost = Random.Range(1,3);
             }
         }
         
