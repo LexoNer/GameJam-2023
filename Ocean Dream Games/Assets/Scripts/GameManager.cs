@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
 
     public List<GameObject> hormigasObreras;
-
+    public bool bossFight;
 
     //Time ramdon to lost the ant
     [SerializeField] float timeAntLost;
@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bossFight = false;
         probably = 10;
         timeAntLost = Random.Range(3, 7);
         vidasUI.text = hormigasObreras.Count.ToString();

@@ -35,8 +35,10 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
 
+        animator = GetComponent<Animator>();
+        animator.SetFloat("Blend",0);
+        
 
         hormigaObrera = gameManager.hormigasObreras[UnityEngine.Random.Range(0, gameManager.hormigasObreras.Count)];
         target = hormigaObrera.transform;
@@ -59,7 +61,8 @@ public class Enemy : MonoBehaviour
             {
                 float step = velocity * Time.deltaTime;
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x, target.position.y + 0.7f, target.position.z), step);
-        
+                animator.SetFloat("Blend", 0);
+
                 if(timeAttack > 1)
                 {
                     timeAttack -= Time.deltaTime;
@@ -67,6 +70,7 @@ public class Enemy : MonoBehaviour
                 else if(Vector3.Distance(transform.position, target.position) < 1 )
                 {
                     print("Attack");
+                    animator.SetFloat("Blend", 1);
                     hormiga.receiveAttack(attack);
                     if(hormiga.life <= 0)
                     {
@@ -86,6 +90,7 @@ public class Enemy : MonoBehaviour
     {
         if(hormigaObrera != null)
         {
+            animator.SetFloat("Blend", 0);
             hormigaObrera = gameManager.hormigasObreras[UnityEngine.Random.Range(0, gameManager.hormigasObreras.Count)];
             target = hormigaObrera.transform;
             hormiga = hormigaObrera.GetComponent<HormigaObrera>();
