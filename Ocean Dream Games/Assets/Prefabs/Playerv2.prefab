@@ -398,8 +398,8 @@ MonoBehaviour:
   attackPoint: {fileID: 8207438650626535565}
   aim: {fileID: 2899231551940889616}
   bullet: {fileID: 6952655925074893728, guid: b126a7502e2dbc64ebd9f1501fb3ad55, type: 3}
-  throwCooldown: 1
-  throwKey: 324
+  throwCooldown: 0.3
+  throwKey: 323
   throwForce: 10
 --- !u!114 &2319971972791360148
 MonoBehaviour:

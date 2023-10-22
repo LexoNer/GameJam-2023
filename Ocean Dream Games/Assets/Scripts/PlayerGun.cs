@@ -23,7 +23,7 @@ public class PlayerGun : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(throwKey) && readyToThrow)
+        if (Input.GetKey(throwKey) && readyToThrow)
         {
             Throw();
         }
@@ -33,7 +33,7 @@ public class PlayerGun : MonoBehaviour
     {
         readyToThrow = false;
 
-        GameObject projectile = Instantiate(bullet, attackPoint.position, Quaternion.identity);
+        GameObject projectile = Instantiate(bullet, attackPoint.position, attackPoint.rotation);
         print("lemon");
 
         Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
