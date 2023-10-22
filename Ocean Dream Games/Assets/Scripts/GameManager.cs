@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -18,17 +19,23 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject[] enemy;
     [SerializeField] Transform enemySpawn;
 
+    //UI
+    [SerializeField] private TextMeshProUGUI vidasUI;
+
     public float cronometro;
     // Start is called before the first frame update
     void Start()
     {
         probably = 10;
         timeAntLost = Random.Range(3, 7);
+        vidasUI.text = hormigasObreras.Count.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        vidasUI.text = hormigasObreras.Count.ToString();
         if (timeAntLost > 0)
         {
             timeAntLost -= Time.deltaTime;
