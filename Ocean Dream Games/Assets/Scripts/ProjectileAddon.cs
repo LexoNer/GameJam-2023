@@ -37,14 +37,14 @@ public class ProjectileAddon : MonoBehaviour
         {
             BossLogic bossLogic = collision.gameObject.GetComponent<BossLogic>();
             bossLogic.receiveAttack(damage);
-            Debug.Log("IS WORKING, IS WORKIIIIING");
+           // Debug.Log("IS WORKING, IS WORKIIIIING");
             Destroy(gameObject);
 
         }
         if(collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponentInParent<BossLogic>().receiveAttack(damage);
-            Debug.Log("IS WORKING, IS WORKIIIIING");
+           // Debug.Log("IS WORKING, IS WORKIIIIING");
             Destroy(gameObject);
 
         }
