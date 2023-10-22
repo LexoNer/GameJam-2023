@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     //UI
     [SerializeField] private TextMeshProUGUI vidasUI;
 
+    //Boos Active 
+    [SerializeField] private Transform targetBossStart;
+
     public float cronometro;
     // Start is called before the first frame update
     void Start()
@@ -38,7 +41,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(cronometro += Time.deltaTime);
+        //print(cronometro += Time.deltaTime);
         vidasUI.text = hormigasObreras.Count.ToString();
         if(!bossFight)
         {
@@ -63,6 +66,11 @@ public class GameManager : MonoBehaviour
             }
         }
         
+        if(targetBossStart.position.x >= 60)
+        {
+            print("Inicia Boss");
+            bossFight = true;
+        }
 
         
     }
