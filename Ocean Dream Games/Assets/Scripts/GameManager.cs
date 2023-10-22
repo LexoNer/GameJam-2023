@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
 {
 
     public List<GameObject> hormigasObreras;
+    //Etapas
+    public bool hormigasPerdidas;
+    public bool enemyFights;
     public bool bossFight;
 
     //Time ramdon to lost the ant

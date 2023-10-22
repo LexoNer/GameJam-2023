@@ -34,8 +34,9 @@ public class Enemy : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         animator = GetComponent<Animator>();
         animator.SetFloat("Blend",0);
@@ -45,13 +46,12 @@ public class Enemy : MonoBehaviour
         target = hormigaObrera.transform;
         hormiga = hormigaObrera.GetComponent<HormigaObrera>();
         canAttack = false;
-        print("TargetInicio: " + Vector3.Distance(transform.position, targetAttack.position));
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, targetAttack.position) < 12)
+        if (Vector3.Distance(transform.position, targetAttack.position) < 15)
         {
             canAttack = true;
         }
@@ -94,12 +94,6 @@ public class Enemy : MonoBehaviour
         
     }
 
-    public void EscarabajoAttack()
-    {
-   
-        
-        
-    }
 
     public void selectNewHormiga()
     {
