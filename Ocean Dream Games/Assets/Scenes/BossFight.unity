@@ -182,8 +182,6 @@ MonoBehaviour:
   velocity: 0.1
   firstAnt: 0
   gameManager: {fileID: 307311090}
-  maxTime: 0
-  minTime: 0
   timeAntLost: 0
 --- !u!1 &97318797 stripped
 GameObject:
@@ -244,8 +242,6 @@ MonoBehaviour:
   velocity: 0.1
   firstAnt: 0
   gameManager: {fileID: 307311090}
-  maxTime: 0
-  minTime: 0
   timeAntLost: 0
 --- !u!1 &191864249
 GameObject:
@@ -418,7 +414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1295016295845377228, guid: 2732db49065db254ea8e63884ae40946, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.40664363
+      value: 0.4066437
       objectReference: {fileID: 0}
     - target: {fileID: 1295016295845377228, guid: 2732db49065db254ea8e63884ae40946, type: 3}
       propertyPath: m_LocalRotation.z
@@ -458,7 +454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1295016296299940728, guid: 2732db49065db254ea8e63884ae40946, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.25040218
+      value: 0.25040215
       objectReference: {fileID: 0}
     - target: {fileID: 1295016296299940728, guid: 2732db49065db254ea8e63884ae40946, type: 3}
       propertyPath: m_LocalRotation.z
@@ -510,7 +506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1295016296811397986, guid: 2732db49065db254ea8e63884ae40946, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.46550247
+      value: 0.4655025
       objectReference: {fileID: 0}
     - target: {fileID: 1295016296890713351, guid: 2732db49065db254ea8e63884ae40946, type: 3}
       propertyPath: m_LocalRotation.w
@@ -530,11 +526,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1295016297054772683, guid: 2732db49065db254ea8e63884ae40946, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.91822755
+      value: 0.9182276
       objectReference: {fileID: 0}
     - target: {fileID: 1295016297054772683, guid: 2732db49065db254ea8e63884ae40946, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.3960533
+      value: 0.39605328
       objectReference: {fileID: 0}
     - target: {fileID: 1295016297116281304, guid: 2732db49065db254ea8e63884ae40946, type: 3}
       propertyPath: m_LocalRotation.w
@@ -607,7 +603,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241458287}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -686,6 +682,7 @@ MonoBehaviour:
   manager: {fileID: 307311090}
   animator: {fileID: 1564140874}
   lifeoftheboss: 100
+  life: 1000
 --- !u!61 &241458291
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -764,11 +761,15 @@ MonoBehaviour:
   - {fileID: 97318797}
   - {fileID: 799148972}
   - {fileID: 31309352}
+  hormigasPerdidas: 0
+  enemyFights: 0
   bossFight: 1
   timeAntLost: 0
   enemy: []
   enemySpawn: {fileID: 0}
   vidasUI: {fileID: 1166130805}
+  targetBossStart: {fileID: 0}
+  bossOB: {fileID: 0}
   cronometro: 0
 --- !u!4 &307311091
 Transform:
@@ -1266,11 +1267,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4116639324255710494, guid: 1395a408e2e1f2f4689678969da4108c, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4116639324255710494, guid: 1395a408e2e1f2f4689678969da4108c, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4116639324255710494, guid: 1395a408e2e1f2f4689678969da4108c, type: 3}
       propertyPath: m_SortingLayerID
@@ -1357,8 +1358,12 @@ PrefabInstance:
       value: 0.2005914
       objectReference: {fileID: 0}
     - target: {fileID: 7399450721874588632, guid: 1395a408e2e1f2f4689678969da4108c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399450721874588632, guid: 1395a408e2e1f2f4689678969da4108c, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7399450721874588632, guid: 1395a408e2e1f2f4689678969da4108c, type: 3}
       propertyPath: m_SortingLayerID
@@ -1436,8 +1441,6 @@ MonoBehaviour:
   velocity: 0.1
   firstAnt: 0
   gameManager: {fileID: 307311090}
-  maxTime: 0
-  minTime: 0
   timeAntLost: 0
 --- !u!1 &831611077
 GameObject:
@@ -1914,6 +1917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 0
+  manager: {fileID: 0}
 --- !u!212 &1271820566
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2367,6 +2371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadMovimiento: {x: 0, y: 0}
+  gameManager: {fileID: 0}
 --- !u!212 &1335960560
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2792,6 +2797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadMovimiento: {x: 0, y: 0}
+  gameManager: {fileID: 0}
 --- !u!212 &1601535096
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3276,6 +3282,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 0
+  speed: 2
+  manager: {fileID: 0}
 --- !u!1 &1997995437
 GameObject:
   m_ObjectHideFlags: 0

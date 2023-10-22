@@ -31,7 +31,7 @@ public class BossLogic : MonoBehaviour
         if (life <= 0)
         {
             Destroy(gameObject);
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene("Final_Cinematic");
         }
 
     }
@@ -107,6 +107,7 @@ public class BossLogic : MonoBehaviour
             if( lifeoftheboss <= 0)
             {
                 Destroy(this.gameObject);
+                SceneManager.LoadScene(4);
             }
         }
     }
