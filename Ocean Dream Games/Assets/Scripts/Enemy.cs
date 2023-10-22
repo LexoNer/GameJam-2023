@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attack;
     [SerializeField] private float timeAttack;
     [SerializeField] private Transform targetAttack;
+    [SerializeField] private float waitTime;
 
     public float life = 10f;
 
@@ -60,28 +61,42 @@ public class Enemy : MonoBehaviour
             if(hormigaObrera != null)
             {
                 float step = velocity * Time.deltaTime;
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x, target.position.y + 0.7f, target.position.z), step);
-                animator.SetFloat("Blend", 0);
-
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x + .35f, target.position.y - 0.7f, target.position.z), step);
+        
                 if(timeAttack > 1)
                 {
                     timeAttack -= Time.deltaTime;
+
+                    if(timeAttack > 1 && timeAttack < 4 )
+                        animator.SetFloat("Blend", 0);
+                   
                 }
-                else if(Vector3.Distance(transform.position, target.position) < 1 )
+                else if(Vector3.Distance(transform.position, target.position) < .9f )
                 {
                     print("Attack");
                     animator.SetFloat("Blend", 1);
                     hormiga.receiveAttack(attack);
-                    if(hormiga.life <= 0)
+                    if (hormiga.life <= 0)
                     {
+                       
                         gameManager.hormigasObreras.Remove(hormigaObrera);
                         Destroy(hormigaObrera);
                         selectNewHormiga();
                     }
+
                     timeAttack = 5;
+
                 }
+                
             }
         }
+        
+        
+    }
+
+    public void EscarabajoAttack()
+    {
+   
         
         
     }
@@ -90,7 +105,7 @@ public class Enemy : MonoBehaviour
     {
         if(hormigaObrera != null)
         {
-            animator.SetFloat("Blend", 0);
+          
             hormigaObrera = gameManager.hormigasObreras[UnityEngine.Random.Range(0, gameManager.hormigasObreras.Count)];
             target = hormigaObrera.transform;
             hormiga = hormigaObrera.GetComponent<HormigaObrera>();

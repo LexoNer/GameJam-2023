@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject attackHitBox;
     public Transform attackPoint;
     BoxCollider2D bc;
-
+    SpriteRenderer spriteRenderer;
 
 
 
@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         attackHitBox.SetActive(false);
         speed = moveSpeed;
         bc = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
        // SetAttackPointPosition(attackTargetRight);
     
     }
@@ -46,11 +47,24 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        Vector3 aimDirection = Input.mousePosition;
+        aimDirection.z = 10;
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(aimDirection);
+        
+
+        if(mousePos.x < transform.position.x)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX= false;
+        }
+
         Escape();
         PlayerAttack();
         if (playerCanMove)
         {
-
             PlayerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         }
           
@@ -76,37 +90,60 @@ public class PlayerMovement : MonoBehaviour
 
     void AnimateCharacter()
     {
+        Vector3 aimDirection = Input.mousePosition;
+        aimDirection.z = 10;
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(aimDirection);
+
+
         if (PlayerInput.x == 0 && PlayerInput.y == 0)
         {
-            animator.SetFloat("Vertical", 0);
             animator.SetFloat("Horizontal", 0);
-
         }
 
-        if (PlayerInput.y == 1)
+        if (mousePos.x < 0)
         {
-            animator.SetFloat("Vertical", 1);
+            if(PlayerInput.x == -1)
+            {
+                animator.SetFloat("Horizontal", 1);
+            }
+            else if(PlayerInput.x == 1)
+            {
+                animator.SetFloat("Horizontal", 2);
+            }
+        }
+
+        if (mousePos.x > 0)
+        {
+            if (PlayerInput.x == -1)
+            {
+                animator.SetFloat("Horizontal", 2);
+            }
+            else if (PlayerInput.x == 1)
+            {
+                animator.SetFloat("Horizontal", 1);
+            }
+        }
+
+
+
+        /* if (PlayerInput.y == -1)
+         {
+            animator.SetFloat("Vertical", -1);
             animator.SetFloat("Horizontal", 0);
-           // SetAttackPointPosition(attackTargetUp);
-        }
-        if (PlayerInput.y == -1)
-        {
-           animator.SetFloat("Vertical", -1);
-           animator.SetFloat("Horizontal", 0);
-          // SetAttackPointPosition(attackTargetDown);
-        }
-        if (PlayerInput.x == -1)
-        {
-            animator.SetFloat("Vertical", 0);
-            animator.SetFloat("Horizontal", -1);
-            //SetAttackPointPosition(attackTargetLeft);
-        }
-        if (PlayerInput.x == 1)
-        {
-            animator.SetFloat("Vertical", 0);
-            animator.SetFloat("Horizontal", 1);
-            //SetAttackPointPosition(attackTargetRight);
-        }
+           // SetAttackPointPosition(attackTargetDown);
+         }
+         if (PlayerInput.x == -1)
+         {
+             animator.SetFloat("Vertical", 0);
+             animator.SetFloat("Horizontal", -1);
+             //SetAttackPointPosition(attackTargetLeft);
+         }
+         if (PlayerInput.x == 1)
+         {
+             animator.SetFloat("Vertical", 0);
+             animator.SetFloat("Horizontal", 1);
+             //SetAttackPointPosition(attackTargetRight);
+         }*/
 
     }
     void Escape()
@@ -134,14 +171,12 @@ public class PlayerMovement : MonoBehaviour
     void PlayerAttack()
     {
         
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetMouseButtonDown(1))
         {
             playerCanMove = false;
             attackHitBox.SetActive(true);
             moveSpeed = 0;
-
-            animator.SetFloat("Vertical", 2);
-            animator.SetFloat("Horizontal", 2);
+            animator.SetFloat("Horizontal", 3);
         }
     }
 

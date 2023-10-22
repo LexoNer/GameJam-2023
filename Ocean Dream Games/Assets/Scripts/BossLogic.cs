@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossLogic : MonoBehaviour
 {
@@ -13,6 +14,26 @@ public class BossLogic : MonoBehaviour
 
     private bool enMovimiento = false;
     public Animator animator;
+
+    //Hola! Kus al habla, voy a hacerle una vida rapidamente al jefe para poder derrotarlo y llevar al jugador a la escena de victoria, asi para confirmar
+    // que todo respecto al dmg tambien funciona con el
+    // voy a escribir un cuanto codigo al respecto, arriba estare usando el SceneManagement tambien ;P
+
+    public float life = 1000f;
+
+    public void receiveAttack(float lessLife)
+    {
+        life -= lessLife;
+       // print("Life = " + life);
+
+        if (life <= 0)
+        {
+            Destroy(gameObject);
+            SceneManager.LoadScene(3);
+        }
+
+    }
+
 
     void Start()
     {

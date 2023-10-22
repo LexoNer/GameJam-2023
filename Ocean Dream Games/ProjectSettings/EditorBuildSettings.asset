@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/KUS_TEST.unity
     guid: 569e7c6b6b27cee4d9bf6a32ef4dd462
+  - enabled: 1
+    path: Assets/Scenes/BossFight.unity
+    guid: 17e78abd2327f8a4f8f5f64f0f6e12b1
+  - enabled: 1
+    path: Assets/Scenes/Final_Cinematic.unity
+    guid: 08418eeebd9f0a841926b15c982087f7
   m_configObjects: {}
