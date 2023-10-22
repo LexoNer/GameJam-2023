@@ -43,6 +43,12 @@ public class MenusButtons : MonoBehaviour
         exitConfirm = false;
     }
 
+    public void CreditsSceneButton()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+
     public void ActivateQuitButton()
     {
         exitConfirm = true;
