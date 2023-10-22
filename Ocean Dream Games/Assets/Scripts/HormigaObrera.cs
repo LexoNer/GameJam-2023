@@ -53,7 +53,7 @@ public class HormigaObrera : MonoBehaviour
 
         // AntStun();
 
-       animator.SetFloat("Blend", 1);
+      // animator.SetFloat("Blend", 1);
 
         if (!inAttacking)
         {
@@ -149,6 +149,11 @@ public class HormigaObrera : MonoBehaviour
         {
             StartCoroutine(huir(false));
 
+        }
+
+        if(other.tag == "AntKiller")
+        {
+            Destroy(gameObject);
         }
     }
 

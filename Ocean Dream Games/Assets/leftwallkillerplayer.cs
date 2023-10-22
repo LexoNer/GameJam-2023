@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class leftwallkillerplayer : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnColliderEnter2D(Collider2D other)
     {
        if( other.gameObject.GetComponent<PlayerMovement>() != null)
         {
             Destroy(other.gameObject);  
         }
+        if (other.gameObject.GetComponent<HormigaObrera>() != null)
+        {
+            Destroy(other.gameObject);
+        }
     }
+
+   
 }
