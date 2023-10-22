@@ -15,7 +15,7 @@ public class HormigaObrera : MonoBehaviour
     bool inAttacking;
     public bool firstAnt;
     Vector3 posicionInicial;
-   public Animator animator;
+    //public Animator animator;
 
     [SerializeField] GameManager gameManager;
 
@@ -55,7 +55,7 @@ public class HormigaObrera : MonoBehaviour
 
       // animator.SetFloat("Blend", 1);
 
-        if (!inAttacking)
+        if (!inAttacking && !gameManager.bossFight)
         {
          //   animator.SetFloat("Blend", 1f);
 
@@ -64,10 +64,7 @@ public class HormigaObrera : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown("space"))
-        {
-                StartCoroutine(huir(false));
-        }
+        
         
 
         
@@ -89,8 +86,11 @@ public class HormigaObrera : MonoBehaviour
 
     IEnumerator huir(bool enemyAttack)
     {
+        if (gameManager.bossFight)
+        {
+            yield break;
+        }
 
-        yield return new WaitForSeconds(1f);
         if (enMovimiento && enemyAttack)
         {
             yield break;

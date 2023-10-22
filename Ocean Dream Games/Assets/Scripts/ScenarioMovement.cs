@@ -8,6 +8,7 @@ public class ScenarioMovement : MonoBehaviour
     private Vector2 offset;
     private Material material;
     private Rigidbody2D hormigas;
+    [SerializeField] GameManager gameManager;
     // Start is called before the first frame update
     void Awake()
     {
@@ -17,7 +18,11 @@ public class ScenarioMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        offset = velocidadMovimiento * Time.deltaTime;
-        material.mainTextureOffset += offset;
+        if (!gameManager.bossFight)
+        {
+
+            offset = velocidadMovimiento * Time.deltaTime;
+            material.mainTextureOffset += offset;
+        }
     }
 }

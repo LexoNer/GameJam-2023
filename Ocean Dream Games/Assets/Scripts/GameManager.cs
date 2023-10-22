@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     //Boos Active 
     [SerializeField] private Transform targetBossStart;
+    [SerializeField] private GameObject bossOB;
 
     public float cronometro;
     // Start is called before the first frame update
@@ -66,9 +67,10 @@ public class GameManager : MonoBehaviour
             }
         }
         
-        if(targetBossStart.position.x >= 60)
+        if(targetBossStart.position.x >= 35)
         {
             print("Inicia Boss");
+            bossOB.SetActive(true);
             bossFight = true;
         }
 
