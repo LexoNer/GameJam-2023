@@ -16,6 +16,21 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attack;
     [SerializeField] private float timeAttack;
     [SerializeField] private Transform targetAttack;
+
+    public float life = 10f;
+
+    public void receiveAttack(float lessLife)
+    {
+        life -= lessLife;
+        print("Life = " + life);
+
+        if (life <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +44,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, targetAttack.position) < 12)
+        if (Vector3.Distance(transform.position, targetAttack.position) < 1)
         {
             canAttack = true;
         }

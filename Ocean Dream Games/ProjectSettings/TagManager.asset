@@ -6,6 +6,7 @@ TagManager:
   tags:
   - AntKiller
   - Enemy
+  - NPCAnt
   layers:
   - Default
   - TransparentFX
@@ -13,7 +14,7 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
+  - NPCant
   - 
   - 
   - 

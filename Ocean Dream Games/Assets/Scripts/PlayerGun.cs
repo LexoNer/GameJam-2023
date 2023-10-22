@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerGun : MonoBehaviour
 {
     public Transform attackPoint;
-    public Transform attackTarget;
+    public Transform aim;
+  //  public Transform attackTarget;
     public GameObject bullet;
 
     public float throwCooldown;
@@ -33,6 +34,7 @@ public class PlayerGun : MonoBehaviour
         readyToThrow = false;
 
         GameObject projectile = Instantiate(bullet, attackPoint.position, Quaternion.identity);
+        print("lemon");
 
         Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
 

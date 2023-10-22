@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KusPlaceHolderEnemy : MonoBehaviour
 {
-    public float life = 5f;
+    public float life = 10f;
 
     public void receiveAttack(float lessLife)
     {

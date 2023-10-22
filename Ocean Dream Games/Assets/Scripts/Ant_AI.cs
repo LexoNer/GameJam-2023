@@ -19,7 +19,7 @@ public class Ant_AI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         speed = aiSpeed;
        //Debug.Log("speed: " + speed);
-        seconds = 5f;
+        seconds = 10f;
     }
 
     private void Update()
@@ -45,8 +45,6 @@ public class Ant_AI : MonoBehaviour
         {
 
             aiSpeed = speed;
-
-            
         }
 
     }

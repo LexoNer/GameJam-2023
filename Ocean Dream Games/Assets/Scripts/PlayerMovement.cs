@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     bool playerCanMove;
     public GameObject attackHitBox;
     public Transform attackPoint;
+    BoxCollider2D bc;
 
 
 
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         playerCanMove = true;
         attackHitBox.SetActive(false);
         speed = moveSpeed;
+        bc = GetComponent<BoxCollider2D>();
        // SetAttackPointPosition(attackTargetRight);
     
     }
@@ -131,7 +133,8 @@ public class PlayerMovement : MonoBehaviour
 
     void PlayerAttack()
     {
-        if (Input.GetMouseButtonDown(0))
+        
+        if (Input.GetKeyDown(KeyCode.F))
         {
             playerCanMove = false;
             attackHitBox.SetActive(true);
