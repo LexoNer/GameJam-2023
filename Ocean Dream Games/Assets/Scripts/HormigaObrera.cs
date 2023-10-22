@@ -105,7 +105,7 @@ public class HormigaObrera : MonoBehaviour
         if (enemyAttack)
         {
             targetpoint = new Vector3(transform.position.x + random1, transform.position.y + random2, transform.position.z);
-            duracion = 2f;
+            duracion = 1f;
           //  animator.SetFloat("Blend", 1);
         }
         else
@@ -143,9 +143,18 @@ public class HormigaObrera : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Player")
+        {
+            StartCoroutine(huir(false));
 
-    
+        }
+    }
 
-   
+
+
+
+
 
 }

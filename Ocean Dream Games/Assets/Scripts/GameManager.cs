@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        print(cronometro += Time.deltaTime);
         vidasUI.text = hormigasObreras.Count.ToString();
         if(!bossFight)
         {
