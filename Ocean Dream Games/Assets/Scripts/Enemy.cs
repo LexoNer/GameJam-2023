@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        //gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         animator = GetComponent<Animator>();
         animator.SetFloat("Blend",0);
@@ -51,6 +51,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(hormigaObrera == null)
+        {
+            selectNewHormiga();
+        }
         if (Vector3.Distance(transform.position, targetAttack.position) < 15)
         {
             canAttack = true;
@@ -97,7 +101,7 @@ public class Enemy : MonoBehaviour
 
     public void selectNewHormiga()
     {
-        if(hormigaObrera != null)
+        //if(hormigaObrera != null)
         {
           
             hormigaObrera = gameManager.hormigasObreras[UnityEngine.Random.Range(0, gameManager.hormigasObreras.Count)];

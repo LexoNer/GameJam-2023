@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
     public List<GameObject> hormigasObreras;
+
+    public List<GameObject> actualizarLista;
     //Etapas
     public bool hormigasPerdidas;
     public bool enemyFights;
@@ -30,6 +33,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject bossOB;
 
     public float cronometro;
+
+    public float countNull;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,8 +47,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        foreach(GameObject go in hormigasObreras)
+        {
+            if(go == null)
+            {
+                hormigasObreras.Remove(go);
+            }
+        }
         //print(cronometro += Time.deltaTime);
-        vidasUI.text = hormigasObreras.Count.ToString();
+        float vidasTotales = hormigasObreras.Count-countNull; 
+        vidasUI.text = vidasTotales.ToString();
         if(!bossFight)
         {
             if (timeAntLost > 0)
@@ -72,6 +85,12 @@ public class GameManager : MonoBehaviour
             print("Inicia Boss");
             bossOB.SetActive(true);
             bossFight = true;
+        }
+
+        if(hormigasObreras.Count < 1)
+        {
+
+            SceneManager.LoadScene(0);
         }
 
         
