@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb3191b9e74501439f31ee1f7708679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2.5
+  damage: 5
 --- !u!70 &6989036744785891998
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -322,10 +322,10 @@ CapsuleCollider2D:
     m_Bits: 4294967295
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 183
+    m_Bits: 439
   m_CallbackLayers:
     serializedVersion: 2
-    m_Bits: 183
+    m_Bits: 439
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
