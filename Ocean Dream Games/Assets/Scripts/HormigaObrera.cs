@@ -35,7 +35,7 @@ public class HormigaObrera : MonoBehaviour
     void Awake()
     {
         timeAntLost = Random.Range(3, 7);
-        transform.position = primerPosicion.position;
+        this.transform.position = primerPosicion.position;
         animator = GetComponent<Animator>();
         seconds = 5f;
         normalVelocity = velocity;
@@ -45,6 +45,7 @@ public class HormigaObrera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        this.transform.position = primerPosicion.position;
 
         AntStun();
 
