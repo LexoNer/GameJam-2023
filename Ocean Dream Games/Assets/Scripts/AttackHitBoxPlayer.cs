@@ -7,7 +7,7 @@ public class AttackHitBoxPlayer : MonoBehaviour
 {
     public float dmg;
     Transform target;
-    int enemiesEncounter;
+    public static int enemiesEncounter;
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -29,6 +29,8 @@ public class AttackHitBoxPlayer : MonoBehaviour
             
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
             enemy.receiveAttack(dmg/enemiesEncounter);
+            print("dmg total:" + dmg);
+            print("dmg per unit:" + dmg / enemiesEncounter);
             EndCombat();
         }
 

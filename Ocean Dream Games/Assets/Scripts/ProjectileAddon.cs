@@ -18,11 +18,18 @@ public class ProjectileAddon : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<KusPlaceHolderEnemy>() != null)
         {
             KusPlaceHolderEnemy enemy = collision.gameObject.GetComponent<KusPlaceHolderEnemy>();
+            enemy.receiveAttack(damage);
+            Debug.Log("isWorking");
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.GetComponent<Enemy>() != null)
+        {
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             enemy.receiveAttack(damage);
             Debug.Log("isWorking");
             Destroy(gameObject);
@@ -32,6 +39,8 @@ public class ProjectileAddon : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    
 
     
     
