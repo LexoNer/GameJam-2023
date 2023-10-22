@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     float speed;
     Vector2 forceToApply;
     Vector2 PlayerInput;
-    public int antsAlive;
     //private GameObject text;
      Animator animator;
     bool playerCanMove;
@@ -161,10 +160,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "AntKiller")
-        {
-            Destroy(gameObject);
-        } 
+     
     }
 
 
