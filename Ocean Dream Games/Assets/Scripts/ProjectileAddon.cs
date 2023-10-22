@@ -47,13 +47,13 @@ public class ProjectileAddon : MonoBehaviour
             Destroy(gameObject);
 
         }
-        if(collision.gameObject.tag == "Enemy")
+        /*if(collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponentInParent<BossLogic>().receiveAttack(damage);
            // Debug.Log("IS WORKING, IS WORKIIIIING");
             Destroy(gameObject);
 
-        }
+        }*/
 
 
         else

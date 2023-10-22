@@ -1799,7 +1799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431b4818c956d9846b7e4cb7144caaed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: {x: 0.02, y: 0}
+  velocidadMovimiento: {x: 0.1, y: 0}
 --- !u!1 &874820353
 GameObject:
   m_ObjectHideFlags: 0
@@ -2031,7 +2031,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &878443694
 Transform:
   m_ObjectHideFlags: 0
@@ -2215,6 +2215,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.017845754
       objectReference: {fileID: 0}
+    - target: {fileID: 5397529148144849504, guid: b905d5610e4a0804292bcab430ebdc14, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 162506794}
+    - target: {fileID: 5397529148144849504, guid: b905d5610e4a0804292bcab430ebdc14, type: 3}
+      propertyPath: targetAttack
+      value: 
+      objectReference: {fileID: 1769645692}
     - target: {fileID: 5735927600305969775, guid: b905d5610e4a0804292bcab430ebdc14, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9999371
@@ -2558,7 +2566,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1784021019
   m_SortingLayer: 1
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: df4b0affbb0f95a4083db2274c3243c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3063,7 +3071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5cf4b486be177a499d689b1919f8f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 0.01
+  velocity: 0.04
 --- !u!1 &1437317333
 GameObject:
   m_ObjectHideFlags: 0
@@ -3363,7 +3371,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e58db1f7c9ba514d97d4652e7d5487c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 0.1
+  velocity: 0.28
+  speed: 2
 --- !u!1001 &1780783189
 PrefabInstance:
   m_ObjectHideFlags: 0
