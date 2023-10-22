@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, targetAttack.position) < 1)
+        if (Vector3.Distance(transform.position, targetAttack.position) < 12)
         {
             canAttack = true;
         }

@@ -60,7 +60,7 @@ public class HormigaObrera : MonoBehaviour
 
             animator.SetFloat("Blend", 1f);
             float step = velocity * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z), step);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(primerPosicion.position.x, primerPosicion.position.y, primerPosicion.position.z), step);
         }
 
         
