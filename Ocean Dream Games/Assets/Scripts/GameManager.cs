@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
                 hormigasObreras.Remove(go);
             }
         }
-        //print(cronometro += Time.deltaTime);
+        //print(cronometro += Time.deltaTime); 
         float vidasTotales = hormigasObreras.Count-countNull; 
         vidasUI.text = vidasTotales.ToString();
         if(!bossFight)
@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
         if(hormigasObreras.Count < 1)
         {
 
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(5);
         }
 
         

@@ -8,7 +8,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 public class Enemy : MonoBehaviour
 {
     private Transform target;
-    private GameObject hormigaObrera;
+    public  GameObject hormigaObrera;
     private HormigaObrera hormiga;
     private Animator animator;
     private bool canAttack;
@@ -20,6 +20,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float waitTime;
 
     public float life = 10f;
+
+
+    //posicion segun tipo de enemigo
+    public float posX;
+    public float posY;
 
     public void receiveAttack(float lessLife)
     {
@@ -65,7 +70,7 @@ public class Enemy : MonoBehaviour
             if(hormigaObrera != null)
             {
                 float step = velocity * Time.deltaTime;
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x + .35f, target.position.y - 0.7f, target.position.z), step);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x + posX, target.position.y - posY, target.position.z), step);
         
                 if(timeAttack > 1)
                 {

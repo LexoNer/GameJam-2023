@@ -48,6 +48,11 @@ public class MenusButtons : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
+    public void ControlsSceneButton()
+    {
+        SceneManager.LoadScene(6);
+    }
+
 
     public void ActivateQuitButton()
     {
