@@ -47,6 +47,12 @@ TagManager:
   - name: Fondo
     uniqueID: 2510946277
     locked: 0
+  - name: Objetos
+    uniqueID: 2526468447
+    locked: 0
+  - name: ObjetosSegundaCapa
+    uniqueID: 950059101
+    locked: 0
   - name: Enemigos
     uniqueID: 1845925353
     locked: 0
