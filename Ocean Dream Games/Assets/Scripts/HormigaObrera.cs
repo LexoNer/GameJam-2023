@@ -16,6 +16,8 @@ public class HormigaObrera : MonoBehaviour
     public bool firstAnt;
     Vector3 posicionInicial;
 
+    [SerializeField] GameManager gameManager;
+
 
     [Header("KusAdded")]
     private bool canMove;
@@ -92,12 +94,21 @@ public class HormigaObrera : MonoBehaviour
         print("Life = " + life);
         run = true;
         inAttacking = true;
-     
-        StartCoroutine(huir(true));
+
+        if (!gameManager.bossFight)
+        {
+            StartCoroutine(huir(true));
+        }
+        
     }
 
     IEnumerator huir(bool enemyAttack)
     {
+        if (!gameManager.bossFight)
+        {
+            yield break;
+        }
+
         if (enMovimiento && enemyAttack)
         {
             yield break;
@@ -144,7 +155,11 @@ public class HormigaObrera : MonoBehaviour
 
     public void StartCorrutina()
     {
-        StartCoroutine(huir(true));
+        if (!gameManager.bossFight)
+        {
+            StartCoroutine(huir(true));
+        }
+        
     }
 
 

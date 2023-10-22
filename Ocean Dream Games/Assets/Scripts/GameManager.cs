@@ -37,25 +37,29 @@ public class GameManager : MonoBehaviour
     {
 
         vidasUI.text = hormigasObreras.Count.ToString();
-        if (timeAntLost > 0)
+        if(!bossFight)
         {
-            timeAntLost -= Time.deltaTime;
-        }
-        else
-        {
-            int probablyEnter = Random.Range(0, 11);
-            print("Probably = " + probablyEnter);
-            if (probablyEnter <= probably)
+            if (timeAntLost > 0)
             {
-                hormigasObreras[Random.Range(0, hormigasObreras.Count)].GetComponent<HormigaObrera>().StartCorrutina();
-                if(ejectOnce == 0)
-                {
-                    probably = 4;
-                    ejectOnce++;
-                }
+                timeAntLost -= Time.deltaTime;
             }
-            timeAntLost = Random.Range(10, 15);
+            else
+            {
+                int probablyEnter = Random.Range(0, 11);
+                print("Probably = " + probablyEnter);
+                if (probablyEnter <= probably)
+                {
+                    hormigasObreras[Random.Range(0, hormigasObreras.Count)].GetComponent<HormigaObrera>().StartCorrutina();
+                    if(ejectOnce == 0)
+                    {
+                        probably = 4;
+                        ejectOnce++;
+                    }
+                }
+                timeAntLost = Random.Range(10, 15);
+            }
         }
+        
 
         
     }

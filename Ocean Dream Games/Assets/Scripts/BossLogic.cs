@@ -12,6 +12,7 @@ public class BossLogic : MonoBehaviour
     public GameManager manager;
 
     private bool enMovimiento = false;
+    public Animator animator;
 
     void Start()
     {
@@ -37,7 +38,7 @@ public class BossLogic : MonoBehaviour
         {
             // Calcular la nueva posición interpolando entre A y B
             float t = tiempoPasado / duracion;
-            transform.position = Vector3.Lerp(posicionInicial, puntoB.position, t);
+            transform.position = Vector3.Lerp(posicionInicial, new Vector3(puntoB.position.x, transform.position.y, transform.position.z), t);
 
             // Actualizar el tiempo transcurrido
             tiempoPasado += Time.deltaTime;
@@ -46,17 +47,22 @@ public class BossLogic : MonoBehaviour
         }
 
         // Asegurarse de que el objeto esté en el punto B al final
-        transform.position = puntoB.position;
+       // transform.position = puntoB.position;
         enMovimiento = false;
 
         print("Attack");
+        animator.SetBool("Attack", true);
         StartCoroutine(waitToAttack());
     }
 
 
     IEnumerator waitToAttack()
     {
-        yield return new WaitForSeconds(10f);
+
+        yield return new WaitForSeconds(1.7f);
+        animator.SetBool("Attack", false);
+        manager.hormigasObreras.Remove(hormigaObrera);
+        Destroy(hormigaObrera);
         StartCoroutine(Boss());
     }
 }
